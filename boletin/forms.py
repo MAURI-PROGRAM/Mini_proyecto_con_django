@@ -23,10 +23,10 @@ class ContactForm(forms.Form):
 	nombre=forms.CharField(required=False)
 	email=forms.EmailField()
 	mensaje=forms.CharField(widget=forms.Textarea)
-	def clean_email(self):
-		email = self.cleaned_data.get("email")
-		email_base,email_provide=email.split('@')
-		dominio,extension=email_provide.split('.')
-		if not "edu" in extension:
-			raise forms.ValidationError("poner un .edu")
-		return email
+	# def clean_email(self):
+	# 	email = self.cleaned_data.get("email")
+	# 	email_base,email_provide=email.split('@')
+	# 	dominio,extension=email_provide.split('.')
+	# 	if not "edu" in extension:
+	# 		raise forms.ValidationError("poner un .edu")
+	# 	return email

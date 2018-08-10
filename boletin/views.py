@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.conf import settings
+from django.core.mail import send_mail
 from .models import Resistrado
 from .forms import RegModelForm,ContactForm
 
@@ -31,14 +33,35 @@ def inicio(request):
 			# obj=Resistrado.objects.create(email=abc,nombre=abc2)
 
 	
-		return render(request,'inicio.html',context)
+		return render(request,'view.html',context)
 	else:
-		return render(request,'inicio.html')
+		return render(request,'view.html')
 
 def contact(request):
 	form=ContactForm(request.POST or None)
 	if form.is_valid():
-		print(form.cleaned_data)
+		email_to=form.cleaned_data.get('email')
+		mensaje=form.cleaned_data.get('mensaje')
+		nombre=form.cleaned_data.get('nombre')
+		asunto='form de contactos'
+		email_from=settings.EMAIL_HOST_USER
+		mensaje_email=mensaje
+
+		send_mail(asunto,
+			mensaje_email,
+			email_from,
+			[email_to],
+			fail_silently=False
+			)
+		
+		# for key in form.cleaned_data:
+		# 	print(key)
+		# 	print(form.cleaned_data.get(key))
+
+		# for key,value  in form.cleaned_data.items():
+		# 	print(key,value)
+		
+		# print(email,mensaje,nombre)
 	context={
 		'el_form': form,
 	}
