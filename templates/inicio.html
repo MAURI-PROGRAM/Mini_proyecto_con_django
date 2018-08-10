@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	{{ temp_titulo}}
+	<hr>
+	<br>
+	{%if el_form%}
+		<form method="POST" action="">
+			{% csrf_token %}
+			{{el_form.as_p}}
+			<input type="submit" value='guardar'>
+		</form>
+	{%endif%}
+	
+</body>
+</html>
