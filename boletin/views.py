@@ -33,9 +33,9 @@ def inicio(request):
 			# obj=Resistrado.objects.create(email=abc,nombre=abc2)
 
 	
-		return render(request,'view.html',context)
+		return render(request,'inicio.html',context)
 	else:
-		return render(request,'view.html')
+		return render(request,'inicio.html')
 
 def contact(request):
 	form=ContactForm(request.POST or None)
