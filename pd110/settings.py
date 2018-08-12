@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'registration',
     'boletin',
 ]
 
@@ -59,7 +61,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'pd110.urls'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
-
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID=1
+LOGIN_REDIRECT_URL='/form1/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
